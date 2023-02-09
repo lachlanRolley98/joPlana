@@ -1,0 +1,17 @@
+D:\myProjects\joPlana\joPlana\bin\Debug\net6.0-windows\joPlana.exe
+D:\myProjects\joPlana\joPlana\bin\Debug\net6.0-windows\joPlana.deps.json
+D:\myProjects\joPlana\joPlana\bin\Debug\net6.0-windows\joPlana.runtimeconfig.json
+D:\myProjects\joPlana\joPlana\bin\Debug\net6.0-windows\joPlana.dll
+D:\myProjects\joPlana\joPlana\bin\Debug\net6.0-windows\joPlana.pdb
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.csproj.AssemblyReference.cache
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.Form1.resources
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.csproj.GenerateResource.cache
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.GeneratedMSBuildEditorConfig.editorconfig
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.AssemblyInfoInputs.cache
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.AssemblyInfo.cs
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.csproj.CoreCompileInputs.cache
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.dll
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\refint\joPlana.dll
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.pdb
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.genruntimeconfig.cache
+D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\ref\joPlana.dll
