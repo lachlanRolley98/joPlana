@@ -16,11 +16,11 @@ namespace joPlana
         DateTime date;
         public string recap = "";
         public string plan = "";
-        int g1;
-        int g2;
-        int g3;
-        int g4;
-        int g5;
+        public int g1;
+        public int g2;
+        public int g3;
+        public int g4;
+        public int g5;
 
         public void fillDay(string recapIN, string planIN, int g1IN, int g2IN, int g3IN, int g4IN, int g5IN)
         {
