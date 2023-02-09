@@ -26,23 +26,14 @@ namespace joPlana
 
 
             dayOverview a = new dayOverview();
-            dayOverview b = new dayOverview();
-            dayOverview c = new dayOverview();
-            dayOverview d = new dayOverview();
-            dayOverview e2 = new dayOverview();
+            
 
-            a.fillDay("hi0", "bye0", 1, 2, 3, 4, 5);
-            b.fillDay("hi1", "bye1", 1 ,2, 3,4 ,5);
-            c.fillDay("hi2", "bye2", 1, 2, 3, 4, 5);
-            d.fillDay("hi3", "bye3", 1, 2, 3, 4, 5);
-            e2.fillDay("hi4", "bye4", 1, 2, 3, 4, 5);
+            a.fillDay("pre bad day, woke up hung as and lay in bed till 10 after wank, had heaps of vape and pre bad anx", "bye0", 1, 2, 3, 4, 5, 6);
+            
 
             List<dayOverview> list = new List<dayOverview>();
             list.Add(a);
-            list.Add(b);
-            list.Add(c);
-            list.Add(d);    
-            list.Add(e2);
+           
 
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
@@ -52,8 +43,9 @@ namespace joPlana
             serializer.Serialize(filestream, list);
 
             filestream.Close();
+            filestream.Close();
 
-           
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -126,6 +118,41 @@ namespace joPlana
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void submitDayNow_Click(object sender, EventArgs e)
+        {
+            List<dayOverview> list = new List<dayOverview>();
+
+            //grab all the data from xml
+            XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
+            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
+            {               
+                    list = (List<dayOverview>)serializer.Deserialize(fileStream); 
+                    fileStream.Close();
+            }
+            
+            //grab data from app and append to list
+            dayOverview curr = new dayOverview();
+            curr.fillDay(recapText.Text, planText.Text, trackBar1.Value, trackBar2.Value, trackBar3.Value, trackBar4.Value, trackBar5.Value, trackBar6.Value);
+            list.Add(curr);
+
+            //save list in xml
+            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
+            {
+                serializer.Serialize(fileStream, list);
+                fileStream.Close();
+            }
         }
     }
 }

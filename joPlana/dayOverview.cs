@@ -21,8 +21,9 @@ namespace joPlana
         public int g3;
         public int g4;
         public int g5;
+        public int g6;
 
-        public void fillDay(string recapIN, string planIN, int g1IN, int g2IN, int g3IN, int g4IN, int g5IN)
+        public void fillDay(string recapIN, string planIN, int g1IN, int g2IN, int g3IN, int g4IN, int g5IN, int g6IN)
         {
             date = DateTime.Now;
             recap = recapIN;
@@ -31,7 +32,8 @@ namespace joPlana
             g2 = g2IN;
             g3 = g3IN;
             g4 = g4IN;
-            g5 = g5IN;        
+            g5 = g5IN;    
+            g6 = g6IN;
         }
         
 
