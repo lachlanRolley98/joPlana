@@ -29,14 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lstNames = new System.Windows.Forms.ListBox();
             this.recapText = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.hi = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,6 +52,15 @@
             this.submitDayDate = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.trackBar6 = new System.Windows.Forms.TrackBar();
+            this.viewDayButton = new System.Windows.Forms.Button();
+            this.viewWeekButton = new System.Windows.Forms.Button();
+            this.viewMonthButton = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
@@ -65,15 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lstNames
-            // 
-            this.lstNames.FormattingEnabled = true;
-            this.lstNames.ItemHeight = 15;
-            this.lstNames.Location = new System.Drawing.Point(1363, 712);
-            this.lstNames.Name = "lstNames";
-            this.lstNames.Size = new System.Drawing.Size(120, 94);
-            this.lstNames.TabIndex = 2;
             // 
             // recapText
             // 
@@ -85,7 +80,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1188, 82);
+            this.button1.Location = new System.Drawing.Point(326, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -96,50 +91,12 @@
             // hi
             // 
             this.hi.AutoSize = true;
-            this.hi.Location = new System.Drawing.Point(1279, 86);
+            this.hi.Location = new System.Drawing.Point(407, 44);
             this.hi.Name = "hi";
             this.hi.Size = new System.Drawing.Size(50, 15);
             this.hi.TabIndex = 7;
             this.hi.Text = "initialise";
             this.hi.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(1188, 124);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1293, 128);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "deserialise";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(1188, 174);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1279, 182);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(208, 15);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "read int from one of the classes in xml";
             // 
             // trackBar1
             // 
@@ -289,6 +246,7 @@
             this.submitDayDate.TabIndex = 28;
             this.submitDayDate.Text = "Submit Date";
             this.submitDayDate.UseVisualStyleBackColor = true;
+            this.submitDayDate.Click += new System.EventHandler(this.submitDayDate_Click);
             // 
             // label11
             // 
@@ -307,11 +265,97 @@
             this.trackBar6.Size = new System.Drawing.Size(259, 45);
             this.trackBar6.TabIndex = 30;
             // 
+            // viewDayButton
+            // 
+            this.viewDayButton.Location = new System.Drawing.Point(509, 399);
+            this.viewDayButton.Name = "viewDayButton";
+            this.viewDayButton.Size = new System.Drawing.Size(183, 45);
+            this.viewDayButton.TabIndex = 31;
+            this.viewDayButton.Text = "View Day";
+            this.viewDayButton.UseVisualStyleBackColor = true;
+            this.viewDayButton.Click += new System.EventHandler(this.viewDayButton_Click);
+            // 
+            // viewWeekButton
+            // 
+            this.viewWeekButton.Location = new System.Drawing.Point(509, 530);
+            this.viewWeekButton.Name = "viewWeekButton";
+            this.viewWeekButton.Size = new System.Drawing.Size(183, 45);
+            this.viewWeekButton.TabIndex = 32;
+            this.viewWeekButton.Text = "View Week";
+            this.viewWeekButton.UseVisualStyleBackColor = true;
+            // 
+            // viewMonthButton
+            // 
+            this.viewMonthButton.Location = new System.Drawing.Point(509, 464);
+            this.viewMonthButton.Name = "viewMonthButton";
+            this.viewMonthButton.Size = new System.Drawing.Size(183, 45);
+            this.viewMonthButton.TabIndex = 33;
+            this.viewMonthButton.Text = "View Month";
+            this.viewMonthButton.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(355, 596);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(49, 19);
+            this.checkBox1.TabIndex = 34;
+            this.checkBox1.Text = "Blue";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(355, 634);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(57, 19);
+            this.checkBox2.TabIndex = 35;
+            this.checkBox2.Text = "Green";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(355, 673);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(60, 19);
+            this.checkBox3.TabIndex = 37;
+            this.checkBox3.Text = "Yellow";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(355, 711);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(65, 19);
+            this.checkBox4.TabIndex = 38;
+            this.checkBox4.Text = "Orange";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(355, 749);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(46, 19);
+            this.checkBox5.TabIndex = 39;
+            this.checkBox5.Text = "Red";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1495, 818);
+            this.Controls.Add(this.checkBox5);
+            this.Controls.Add(this.checkBox4);
+            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.viewMonthButton);
+            this.Controls.Add(this.viewWeekButton);
+            this.Controls.Add(this.viewDayButton);
             this.Controls.Add(this.trackBar6);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.submitDayDate);
@@ -331,14 +375,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.hi);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.recapText);
-            this.Controls.Add(this.lstNames);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -355,14 +394,9 @@
         }
 
         #endregion
-        private ListBox lstNames;
         private TextBox recapText;
         private Button button1;
         private Label hi;
-        private Button button3;
-        private Label label2;
-        private Button button4;
-        private Label label3;
         private TrackBar trackBar1;
         private MonthCalendar monthCalendar1;
         private Label label1;
@@ -383,5 +417,14 @@
         private Button submitDayDate;
         private Label label11;
         private TrackBar trackBar6;
+        private Button viewDayButton;
+        private Button viewWeekButton;
+        private Button viewMonthButton;
+        private ColorDialog colorDialog1;
+        private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private CheckBox checkBox3;
+        private CheckBox checkBox4;
+        private CheckBox checkBox5;
     }
 }

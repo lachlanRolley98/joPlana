@@ -16,11 +16,8 @@ namespace joPlana
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
+        //put somthing in xml so its initialised
         private void button1_Click_2(object sender, EventArgs e)
         {
 
@@ -28,7 +25,7 @@ namespace joPlana
             dayOverview a = new dayOverview();
             
 
-            a.fillDay("pre bad day, woke up hung as and lay in bed till 10 after wank, had heaps of vape and pre bad anx", "bye0", 1, 2, 3, 4, 5, 6);
+            a.fillDay("aa", "bye0", 1, 2, 3, 4, 5, 6, 7);
             
 
             List<dayOverview> list = new List<dayOverview>();
@@ -48,88 +45,45 @@ namespace joPlana
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+
+
+
+
+
+
+
+
+
+
+        private void label2_Click(object sender, EventArgs e)
         {
-            XmlTextWriter writer = new XmlTextWriter("allDays.xml", System.Text.Encoding.UTF8);
+
         }
-
-       
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            List<dayOverview> list = new List<dayOverview>();
-
-            XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
-
-            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
-            {
-                list = (List<dayOverview>)serializer.Deserialize(fileStream);
-            }
-
-            //var a = list[3].plan;
-            //lstNames.Items.Add(a);
-
-            for (int i = 0; i < 100; i++){
-                dayOverview a = new dayOverview();
-                a.fillDay("hiloop", "byeloop", i+9, i+9, i+9, i+9, i+9);
-                list.Add(a);
-            }          
-            FileStream fileStream1 = new FileStream("allDays.xml", FileMode.Open);
-
-
-            serializer.Serialize(fileStream1, list);
-
-            fileStream1.Close();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            List<dayOverview> list = new List<dayOverview>();
-
-            XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
-
-            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
-            {
-                list = (List<dayOverview>)serializer.Deserialize(fileStream);
-            }
-
-            var a = list[87].g1;
-            lstNames.Items.Add(chocolate());
-        }
-
-
-
-        //works
-        public int chocolate()
-        {
-            return 69;
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void trackBar3_Scroll(object sender, EventArgs e)
         {
 
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
         private void label6_Click(object sender, EventArgs e)
         {
 
         }
-
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
 
         }
 
+       
+        
+        
         private void submitDayNow_Click(object sender, EventArgs e)
         {
             List<dayOverview> list = new List<dayOverview>();
@@ -141,10 +95,16 @@ namespace joPlana
                     list = (List<dayOverview>)serializer.Deserialize(fileStream); 
                     fileStream.Close();
             }
-            
+
             //grab data from app and append to list
+            int colour = 0;
+            if (checkBox1.Checked) { colour = 5; }
+            else if (checkBox2.Checked) { colour = 4; }
+            else if (checkBox3.Checked) { colour = 3; }
+            else if (checkBox4.Checked) { colour = 2; }
+            else  { colour = 1; }
             dayOverview curr = new dayOverview();
-            curr.fillDay(recapText.Text, planText.Text, trackBar1.Value, trackBar2.Value, trackBar3.Value, trackBar4.Value, trackBar5.Value, trackBar6.Value);
+            curr.fillDay(recapText.Text, planText.Text, trackBar1.Value, trackBar2.Value, trackBar3.Value, trackBar4.Value, trackBar5.Value, trackBar6.Value, colour);
             list.Add(curr);
 
             //save list in xml
@@ -153,6 +113,105 @@ namespace joPlana
                 serializer.Serialize(fileStream, list);
                 fileStream.Close();
             }
+
+            //cleanup text boxes and sliders
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+
+            trackBar1.Value = 0;
+            trackBar2.Value = 0;
+            trackBar3.Value = 0;
+            trackBar4.Value = 0;
+            trackBar5.Value = 0;
+            trackBar6.Value = 0;
+
+            recapText.Text = "";
+            planText.Text = "";
         }
+
+        private void submitDayDate_Click(object sender, EventArgs e)
+        {
+            List<dayOverview> list = new List<dayOverview>();
+
+            //grab all the data from xml
+            XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
+            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
+            {
+                list = (List<dayOverview>)serializer.Deserialize(fileStream);
+                fileStream.Close();
+            }
+
+            //grab data from app and append to list
+            //grab data from app and append to list
+            int colour = 0;
+            if (checkBox1.Checked) { colour = 5; }
+            else if (checkBox2.Checked) { colour = 4; }
+            else if (checkBox3.Checked) { colour = 3; }
+            else if (checkBox4.Checked) { colour = 2; }
+            else { colour = 1; }
+            dayOverview curr = new dayOverview();
+            curr.fillDay(recapText.Text, planText.Text, trackBar1.Value, trackBar2.Value, trackBar3.Value, trackBar4.Value, trackBar5.Value, trackBar6.Value, colour);
+            curr.date = monthCalendar1.SelectionRange.Start;
+            list.Add(curr);
+
+            //save list in xml
+            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
+            {
+                serializer.Serialize(fileStream, list);
+                fileStream.Close();
+            }
+
+            //cleanup text boxes and sliders
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+
+            trackBar1.Value = 0;
+            trackBar2.Value = 0;
+            trackBar3.Value = 0;
+            trackBar4.Value = 0;
+            trackBar5.Value = 0;
+            trackBar6.Value = 0;
+
+            recapText.Text = "";
+            planText.Text = "";
+        }
+
+        private void viewDayButton_Click(object sender, EventArgs e)
+        {
+
+            DateTime specificDay = monthCalendar1.SelectionRange.Start;
+
+            List<dayOverview> list = new List<dayOverview>();
+            //grab all the data from xml
+            XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
+            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
+            {
+                list = (List<dayOverview>)serializer.Deserialize(fileStream);
+                fileStream.Close();
+            }
+
+            dayOverview yeet = new dayOverview();
+            foreach (var day in list)
+            {
+                if(day.date.Date == specificDay.Date)
+                {
+                    yeet = day;
+                }
+            }
+
+
+
+            var m = new Form2();
+            m.Show();
+
+        }
+
+       
     }
 }

@@ -13,7 +13,7 @@ namespace joPlana
     public class dayOverview
     {
 
-        DateTime date;
+        public DateTime date;
         public string recap = "";
         public string plan = "";
         public int g1;
@@ -22,8 +22,9 @@ namespace joPlana
         public int g4;
         public int g5;
         public int g6;
+        public int g7;
 
-        public void fillDay(string recapIN, string planIN, int g1IN, int g2IN, int g3IN, int g4IN, int g5IN, int g6IN)
+        public void fillDay(string recapIN, string planIN, int g1IN, int g2IN, int g3IN, int g4IN, int g5IN, int g6IN, int g7IN)
         {
             date = DateTime.Now;
             recap = recapIN;
@@ -34,6 +35,7 @@ namespace joPlana
             g4 = g4IN;
             g5 = g5IN;    
             g6 = g6IN;
+            g7 = g7IN;  
         }
         
 
