@@ -11,6 +11,11 @@ namespace joPlana
 {
     public partial class Form1 : Form
     {
+        //globals to be passed into other forms
+        
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -188,6 +193,8 @@ namespace joPlana
             DateTime specificDay = monthCalendar1.SelectionRange.Start;
 
             List<dayOverview> list = new List<dayOverview>();
+            List<dayOverview> bufferDayOverViewList = new List<dayOverview>();
+
             //grab all the data from xml
             XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
             using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
@@ -196,19 +203,26 @@ namespace joPlana
                 fileStream.Close();
             }
 
-            dayOverview yeet = new dayOverview();
+            
+            bool recordFound = false;
             foreach (var day in list)
             {
                 if(day.date.Date == specificDay.Date)
                 {
-                    yeet = day;
+                    
+                    recordFound = true;
+                    bufferDayOverViewList.Add(day);
                 }
             }
 
-
-
             var m = new Form2();
             m.Show();
+            m.fillForm2Recap(sender, e, bufferDayOverViewList);
+
+
+
+
+
 
         }
 
