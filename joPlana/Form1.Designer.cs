@@ -61,6 +61,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.submitDreams = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
@@ -230,7 +231,7 @@
             // 
             // submitDayNow
             // 
-            this.submitDayNow.Location = new System.Drawing.Point(509, 302);
+            this.submitDayNow.Location = new System.Drawing.Point(481, 302);
             this.submitDayNow.Name = "submitDayNow";
             this.submitDayNow.Size = new System.Drawing.Size(75, 70);
             this.submitDayNow.TabIndex = 27;
@@ -240,7 +241,7 @@
             // 
             // submitDayDate
             // 
-            this.submitDayDate.Location = new System.Drawing.Point(617, 302);
+            this.submitDayDate.Location = new System.Drawing.Point(562, 302);
             this.submitDayDate.Name = "submitDayDate";
             this.submitDayDate.Size = new System.Drawing.Size(75, 70);
             this.submitDayDate.TabIndex = 28;
@@ -343,11 +344,22 @@
             this.checkBox5.Text = "Red";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
+            // submitDreams
+            // 
+            this.submitDreams.Location = new System.Drawing.Point(643, 302);
+            this.submitDreams.Name = "submitDreams";
+            this.submitDreams.Size = new System.Drawing.Size(75, 70);
+            this.submitDreams.TabIndex = 40;
+            this.submitDreams.Text = "Submit Dreams";
+            this.submitDreams.UseVisualStyleBackColor = true;
+            this.submitDreams.Click += new System.EventHandler(this.submitDreams_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 797);
+            this.Controls.Add(this.submitDreams);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
@@ -426,5 +438,6 @@
         private CheckBox checkBox3;
         private CheckBox checkBox4;
         private CheckBox checkBox5;
+        private Button submitDreams;
     }
 }

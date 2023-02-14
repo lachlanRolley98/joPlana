@@ -17,3 +17,4 @@ D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\joPlana.genruntimeconfig.
 D:\myProjects\joPlana\joPlana\obj\Debug\net6.0-windows\ref\joPlana.dll
 D:\myProjects\joplana\joPlana\obj\Debug\net6.0-windows\joPlana.Form2.resources
 D:\myProjects\joplana\joPlana\obj\Debug\net6.0-windows\joPlana.Properties.Resources.resources
+D:\myProjects\joplana\joPlana\obj\Debug\net6.0-windows\joPlana.Form3.resources

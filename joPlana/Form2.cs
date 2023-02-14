@@ -31,6 +31,7 @@ namespace joPlana
             {
                 textBox1.Text = apple[0].plan;
                 textBox2.Text = apple[0].recap;
+                textBox3.Text = apple[0].dream;
                
                 if (apple[0].g1 == 1) { panel1.BackColor = Color.Red;}
                 else if (apple[0].g1 == 2) { panel2.BackColor = Color.Orange;}
@@ -79,6 +80,11 @@ namespace joPlana
         private void Form2_Paint(object sender, PaintEventArgs e)
         {
             
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
 

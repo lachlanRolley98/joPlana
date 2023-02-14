@@ -16,6 +16,7 @@ namespace joPlana
         public DateTime date;
         public string recap = "";
         public string plan = "";
+        public string dream = "";
         public int g1;
         public int g2;
         public int g3;
@@ -37,12 +38,14 @@ namespace joPlana
             g6 = g6IN;
             dayRating = g7IN;  
         }
+
+        public void fillDream(string DreamIn)
+        {
+            dream = DreamIn;
+        }
         
 
-        public void PooPants()
-        {
-            
-        }
+        
 
     }
 
