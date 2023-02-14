@@ -278,16 +278,17 @@
             // 
             // viewWeekButton
             // 
-            this.viewWeekButton.Location = new System.Drawing.Point(509, 530);
+            this.viewWeekButton.Location = new System.Drawing.Point(509, 464);
             this.viewWeekButton.Name = "viewWeekButton";
             this.viewWeekButton.Size = new System.Drawing.Size(183, 45);
             this.viewWeekButton.TabIndex = 32;
             this.viewWeekButton.Text = "View Week";
             this.viewWeekButton.UseVisualStyleBackColor = true;
+            this.viewWeekButton.Click += new System.EventHandler(this.viewWeekButton_Click);
             // 
             // viewMonthButton
             // 
-            this.viewMonthButton.Location = new System.Drawing.Point(509, 464);
+            this.viewMonthButton.Location = new System.Drawing.Point(509, 530);
             this.viewMonthButton.Name = "viewMonthButton";
             this.viewMonthButton.Size = new System.Drawing.Size(183, 45);
             this.viewMonthButton.TabIndex = 33;

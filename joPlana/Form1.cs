@@ -310,5 +310,11 @@ namespace joPlana
             m.Show();
             
         }
+
+        private void viewWeekButton_Click(object sender, EventArgs e)
+        {
+            var m = new weekRecapForm();
+            m.Show();
+        }
     }
 }
