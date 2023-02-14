@@ -14,16 +14,16 @@ namespace joPlana
     {
 
         public DateTime date;
-        public string recap = "";
-        public string plan = "";
-        public string dream = "";
-        public int g1;
-        public int g2;
-        public int g3;
-        public int g4;
-        public int g5;
-        public int g6;
-        public int dayRating;
+        public string recap = " ";
+        public string plan = " ";
+        public string dream = " ";
+        public int g1 = -1;
+        public int g2 = -1;
+        public int g3 = -1;
+        public int g4 = -1;
+        public int g5 = -1;
+        public int g6 = -1;
+        public int dayRating = -1;
 
         public void fillDay(string recapIN, string planIN, int g1IN, int g2IN, int g3IN, int g4IN, int g5IN, int g6IN, int g7IN)
         {

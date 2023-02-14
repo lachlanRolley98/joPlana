@@ -53,11 +53,8 @@ namespace joPlana
                 textBox2.Text = "please create day before submitting dream";
             }
 
-
-
-
             //save list in xml
-            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
+            using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Create))
             {
                 serializer.Serialize(fileStream, list);
                 fileStream.Close();
