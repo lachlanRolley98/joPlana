@@ -204,11 +204,11 @@ namespace joPlana
             //grab data from app and append to list
             //grab data from app and append to list
             int colour = 0;
-            if (checkBox1.Checked) { colour = 5; }
-            else if (checkBox2.Checked) { colour = 4; }
-            else if (checkBox3.Checked) { colour = 3; }
-            else if (checkBox4.Checked) { colour = 2; }
-            else { colour = 1; }
+            if (checkBox1.Checked) { colour = 4; }
+            else if (checkBox2.Checked) { colour = 3; }
+            else if (checkBox3.Checked) { colour = 2; }
+            else if (checkBox4.Checked) { colour = 1; }
+            else { colour = 0; }
 
             //check if duplicate and update day if it is
             DateTime timeNow = monthCalendar1.SelectionRange.Start;
@@ -273,7 +273,7 @@ namespace joPlana
             List<dayOverview> list = new List<dayOverview>();
             List<dayOverview> bufferDayOverViewList = new List<dayOverview>();
 
-            //grab all the data from xml
+            //grab all the data from xml, note use of file.Open instead of create
             XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
             using (FileStream fileStream = new FileStream("allDays.xml", FileMode.Open))
             {
@@ -313,7 +313,13 @@ namespace joPlana
 
         private void viewWeekButton_Click(object sender, EventArgs e)
         {
+            
+            //grab week from the form (whichever day selected will be converted to the week
+            DateTime specificDay = monthCalendar1.SelectionRange.Start;
             var m = new weekRecapForm();
+            //setup the form with everything
+            m.setup(sender, e, specificDay);
+            //show the form
             m.Show();
         }
     }
