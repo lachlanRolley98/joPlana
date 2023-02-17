@@ -35,7 +35,7 @@ namespace joPlana
             weMoRePlan b = new weMoRePlan();
             
             a.fillDay("setup", "setup", 0, 0, 0, 0, 0, 0, 0);
-            b.fillweMo("setup", "setup", 0, 0, 0, 0, 0, 0, 0);
+            b.fillweMo("setup", "setup", 0, 0, 0, 0, 0, 0, 0, "none");
 
             DateTime oneYearAgoToday = DateTime.Now.AddYears(-50);
             a.date = oneYearAgoToday;
@@ -341,6 +341,17 @@ namespace joPlana
             //grab week from the form (whichever day selected will be converted to the week
             DateTime specificDay = monthCalendar1.SelectionRange.Start;
             var m = new weekRecapForm();
+            //setup the form with everything
+            m.setup(sender, e, specificDay);
+            //show the form
+            m.Show();
+        }
+
+        private void viewMonthButton_Click(object sender, EventArgs e)
+        {
+            //grab week from the form (whichever day selected will be converted to the week
+            DateTime specificDay = monthCalendar1.SelectionRange.Start;
+            var m = new MonthRecap();
             //setup the form with everything
             m.setup(sender, e, specificDay);
             //show the form

@@ -294,6 +294,7 @@
             this.viewMonthButton.TabIndex = 33;
             this.viewMonthButton.Text = "View Month";
             this.viewMonthButton.UseVisualStyleBackColor = true;
+            this.viewMonthButton.Click += new System.EventHandler(this.viewMonthButton_Click);
             // 
             // checkBox1
             // 

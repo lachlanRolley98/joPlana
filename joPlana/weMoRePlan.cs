@@ -15,7 +15,7 @@ namespace joPlana
         //date will be a monday similar to the monday we search for 
         //if type is review, it will be the review of the week that starts on the monday
         //if its a plan it will be the monday of the week the plan is for
-        
+        public String type = "none";
         public DateTime date;
         public string recap = " ";
         public string plan = " ";
@@ -29,7 +29,7 @@ namespace joPlana
 
 
 
-        public void fillweMo(string recapIN, string planIN, int g1IN, int g2IN, int g3IN, int g4IN, int g5IN, int g6IN, int g7IN)
+        public void fillweMo(string recapIN, string planIN, int g1IN, int g2IN, int g3IN, int g4IN, int g5IN, int g6IN, int g7IN, string typeIn)
         {
             date = DateTime.Now;
             recap = recapIN;
@@ -41,6 +41,7 @@ namespace joPlana
             g5 = g5IN;
             g6 = g6IN;
             weekrating = g7IN;
+            type = typeIn;
         }
 
 

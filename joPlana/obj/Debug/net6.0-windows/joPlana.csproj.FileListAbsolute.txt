@@ -19,3 +19,4 @@ D:\myProjects\joplana\joPlana\obj\Debug\net6.0-windows\joPlana.Form2.resources
 D:\myProjects\joplana\joPlana\obj\Debug\net6.0-windows\joPlana.Properties.Resources.resources
 D:\myProjects\joplana\joPlana\obj\Debug\net6.0-windows\joPlana.Form3.resources
 D:\myProjects\joplana\joPlana\obj\Debug\net6.0-windows\joPlana.weekRecapForm.resources
+D:\myProjects\joplana\joPlana\obj\Debug\net6.0-windows\joPlana.MonthRecap.resources

@@ -120,7 +120,7 @@ namespace joPlana
                 
                 
                 //find current recap if exists and chuck in
-                if(fullDateTime.DayOfYear == m.date.DayOfYear)
+                if(fullDateTime.DayOfYear == m.date.DayOfYear && m.type == "week")
                 {
                     //cool we got a recap, chuck it in
                     textBox16.Text = m.recap;
@@ -131,13 +131,13 @@ namespace joPlana
                     else { textBox16.BackColor = Color.Cyan;}
                 }
                 //find current plan for next week
-                if (fullDateTime.DayOfYear == m.date.DayOfYear)
+                if (fullDateTime.DayOfYear == m.date.DayOfYear && m.type == "week")
                 {
                     //cool we got a plan, chuck it in
                     textBox17.Text = m.plan;                 
                 }
                 //find last week plan
-                if (fullDateTime.DayOfYear - 7 == m.date.DayOfYear)
+                if (fullDateTime.DayOfYear - 7 == m.date.DayOfYear && m.type == "week")
                 {
                     //cool we got a plan, chuck it in
                     textBox15.Text = m.plan;
@@ -526,8 +526,9 @@ namespace joPlana
 
             weMoRePlan add = new weMoRePlan();
             int weekavg = (avg1 + avg2 + avg3 + avg4 + avg5 + avg6) / 6;
-            add.fillweMo(textBox16.Text, textBox17.Text, avg1 / 7, avg2 / 7, avg3 / 7, avg4 / 7, avg5 / 7, avg6 / 7, weekavg);
+            add.fillweMo(textBox16.Text, textBox17.Text, avg1 / 7, avg2 / 7, avg3 / 7, avg4 / 7, avg5 / 7, avg6 / 7, weekavg, "week");
             add.date = startDate;
+            
             listWeek.Add(add);
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
