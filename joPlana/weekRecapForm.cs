@@ -21,6 +21,7 @@ namespace joPlana
         int avg4;
         int avg5;
         int avg6;
+        DateTime startDate;
 
         
         public weekRecapForm()
@@ -47,7 +48,7 @@ namespace joPlana
                 return;
             }
             
-            
+            startDate = fullDateTime;
             List<dayOverview> list = new List<dayOverview>();
             
 
@@ -98,21 +99,62 @@ namespace joPlana
             //fill in the averages
             colourAvgs();
 
+
             //everything is filled besides last weeks plan and current recap
+            //this is where we fill all that in if its old, To actually write the review, we gota click the button
+            List<weMoRePlan> listWeek = new List<weMoRePlan>();
+            //grab all the data from xml
+            XmlSerializer serializer2 = new XmlSerializer(typeof(List<weMoRePlan>));
+            using (FileStream fileStream = new FileStream("allWeekMonths.xml", FileMode.Open))
+            {
+                listWeek = (List<weMoRePlan>)serializer2.Deserialize(fileStream);
+                fileStream.Close();
+            }
+            //ok here we have weMo in a list
+            //check if there is a plan for next week
+            
+            foreach(var m in listWeek)
+            {
+                //the review and next week plan will have the same date as the selected day of the week
+                //the plan for the current week we are looking for will be 7 days earler so gota look back then
+                
+                
+                //find current recap if exists and chuck in
+                if(fullDateTime.DayOfYear == m.date.DayOfYear)
+                {
+                    //cool we got a recap, chuck it in
+                    textBox16.Text = m.recap;
+                    if (m.weekrating == 0) { textBox16.BackColor = Color.Red; }
+                    else if (m.weekrating == 1) { textBox16.BackColor = Color.Orange;}
+                    else if (m.weekrating == 2) { textBox16.BackColor = Color.Yellow;}
+                    else if (m.weekrating == 3) { textBox16.BackColor = Color.Lime;}
+                    else { textBox16.BackColor = Color.Cyan;}
+                }
+                //find current plan for next week
+                if (fullDateTime.DayOfYear == m.date.DayOfYear)
+                {
+                    //cool we got a plan, chuck it in
+                    textBox17.Text = m.plan;                 
+                }
+                //find last week plan
+                if (fullDateTime.DayOfYear - 7 == m.date.DayOfYear)
+                {
+                    //cool we got a plan, chuck it in
+                    textBox15.Text = m.plan;
+                }
+            }
+            
+
         }
 
         public void putDayInForm(dayOverview day, DateTime fullDateTime, bool overflow)
         {
             //here we should be given a day in the selected week. 
-            //probs just do if day == fullDateTime.day+1, its a tuesday
-            // note overflow will always mean the days are less than the selected day
-            //so to fill day 1, if day == day chuck in
-            //day 2 if day = day+2 || (overflow && day = 2)  // should get all the days with this pattern
-            //day 3 if day = day+2 || (overflow && day = 3)
+            //use .dayofyear +1 +2 +3....
             
 
                 //Monday
-                if (day.date.Day == fullDateTime.Day)
+                if (day.date.DayOfYear == fullDateTime.DayOfYear)
                 {
                     textBox1.Text = day.recap;
                     textBox14.Text = day.dream;
@@ -156,7 +198,7 @@ namespace joPlana
                     else { textBox1.BackColor = Color.Cyan; }
             }
                 //Tuesday
-                if (day.date.Day == fullDateTime.Day + 1 || (overflow && day.date.Day == 1))
+                if (day.date.DayOfYear  == fullDateTime.DayOfYear + 1)
                 {
                     textBox2.Text = day.recap;
                     textBox13.Text = day.dream;
@@ -199,7 +241,7 @@ namespace joPlana
                     else { textBox2.BackColor = Color.Cyan;}
             }
                 //Wednesday
-                if (day.date.Day == fullDateTime.Day + 2 || (overflow && day.date.Day == 2))
+                if (day.date.DayOfYear  == fullDateTime.DayOfYear + 2)
                 {
                     textBox3.Text = day.recap;
                     textBox12.Text = day.dream;
@@ -242,7 +284,7 @@ namespace joPlana
                     else { textBox3.BackColor = Color.Cyan; }
             }
                 //Thursday
-                if (day.date.Day == fullDateTime.Day + 3 || (overflow && day.date.Day == 3))
+                if (day.date.DayOfYear  == fullDateTime.DayOfYear + 3)
                 {
                     textBox4.Text = day.recap;
                     textBox11.Text = day.dream;
@@ -285,8 +327,8 @@ namespace joPlana
                     else { textBox4.BackColor = Color.Cyan;}
             }
                 //Friday
-                if (day.date.Day == fullDateTime.Day + 4 || (overflow && day.date.Day == 4))
-                {
+                if (day.date.DayOfYear == fullDateTime.DayOfYear + 4)
+            {
                     textBox5.Text = day.recap;
                     textBox10.Text = day.dream;
                     if (day.g1 == 0) { panel5.BackColor = Color.Red; }
@@ -328,7 +370,7 @@ namespace joPlana
                     else { textBox5.BackColor = Color.Cyan;}
             }
                 //Saturday
-                if (day.date.Day == fullDateTime.Day + 5 || (overflow && day.date.Day == 5))
+                if (day.date.DayOfYear == fullDateTime.DayOfYear + 5)
                 {
                     textBox6.Text = day.recap;
                     textBox9.Text = day.dream;
@@ -371,8 +413,8 @@ namespace joPlana
                     else { textBox6.BackColor = Color.Cyan;}
             }
                 //Sunday
-                if (day.date.Day == fullDateTime.Day + 6 || (overflow && day.date.Day == 6))
-                {
+                if (day.date.DayOfYear== fullDateTime.DayOfYear + 6)
+            {
                     textBox7.Text = day.recap;
                     textBox8.Text = day.dream;
                     if (day.g1 == 0) { panel7.BackColor = Color.Red; }
@@ -467,9 +509,39 @@ namespace joPlana
 
         }
 
+        
+        //this is where we wana submit our recap and next week plan
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<weMoRePlan> listWeek = new List<weMoRePlan>();
+            //grab all the data from xml
+            XmlSerializer serializer2 = new XmlSerializer(typeof(List<weMoRePlan>));
+            using (FileStream fileStream = new FileStream("allWeekMonths.xml", FileMode.Open))
+            {
+                listWeek = (List<weMoRePlan>)serializer2.Deserialize(fileStream);
+                fileStream.Close();
+            }
 
-       
+            //we got the data, create new weMoRePlan then add to list then serialise list
 
+            weMoRePlan add = new weMoRePlan();
+            int weekavg = (avg1 + avg2 + avg3 + avg4 + avg5 + avg6) / 6;
+            add.fillweMo(textBox16.Text, textBox17.Text, avg1 / 7, avg2 / 7, avg3 / 7, avg4 / 7, avg5 / 7, avg6 / 7, weekavg);
+            add.date = startDate;
+            listWeek.Add(add);
+
+            XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
+            using (FileStream fileStream = new FileStream("allWeekMonths.xml", FileMode.Create))
+            {
+                serializer2.Serialize(fileStream, listWeek);
+                fileStream.Close();
+            }
+
+            textBox16.Text = "Recorded";
+            textBox17.Text = "Recorded";
+
+
+        }
     }
        
 }

@@ -24,29 +24,53 @@ namespace joPlana
 
        
         //put somthing in xml so its initialised
+        // initialise weekMonth and day
         private void button1_Click_2(object sender, EventArgs e)
         {
 
+            
+
 
             dayOverview a = new dayOverview();
+            weMoRePlan b = new weMoRePlan();
             
+            a.fillDay("setup", "setup", 0, 0, 0, 0, 0, 0, 0);
+            b.fillweMo("setup", "setup", 0, 0, 0, 0, 0, 0, 0);
 
-            a.fillDay("aa", "bye0", 1, 2, 3, 4, 5, 6, 7);
+            DateTime oneYearAgoToday = DateTime.Now.AddYears(-50);
+            a.date = oneYearAgoToday;
+            b.date = oneYearAgoToday;
+
+            List<dayOverview> listA = new List<dayOverview>();
+            List<weMoRePlan> listB = new List<weMoRePlan>();
             
-
-            List<dayOverview> list = new List<dayOverview>();
-            list.Add(a);
+            listA.Add(a);
+            listB.Add(b);
            
+            XmlSerializer serializerA = new XmlSerializer(typeof(List<dayOverview>));
+            XmlSerializer serializerB = new XmlSerializer(typeof(List<weMoRePlan>));
+
+            String pathA = @"allDays.xml";
+            if (!File.Exists(pathA) || new FileInfo(@"allDays.xml").Length <10 )
+            {
+                TextWriter filestreamA = new StreamWriter("allDays.xml");
+                serializerA.Serialize(filestreamA, listA);
+                filestreamA.Close();
+            }
+
+            String pathB = @"allWeekMonths.xml";
+            if (!File.Exists(pathB) || new FileInfo(@"allWeekMonths.xml").Length < 10)
+            {
+                TextWriter filestreamB = new StreamWriter("allWeekMonths.xml");
+                serializerB.Serialize(filestreamB, listB);
+                filestreamB.Close();
+            }
 
 
-            XmlSerializer serializer = new XmlSerializer(typeof(List<dayOverview>));
+            //FileInfo g = new FileInfo(@"allWeekMonths.xml");
+            //recapText.Text = g.Length.ToString();
 
-            TextWriter filestream = new StreamWriter("allDays.xml");
 
-            serializer.Serialize(filestream, list);
-
-            filestream.Close();
-            filestream.Close();
 
 
         }

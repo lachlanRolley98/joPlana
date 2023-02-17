@@ -116,6 +116,9 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -204,7 +207,7 @@
             this.textBox16.Location = new System.Drawing.Point(1097, 134);
             this.textBox16.Multiline = true;
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(405, 256);
+            this.textBox16.Size = new System.Drawing.Size(405, 151);
             this.textBox16.TabIndex = 113;
             // 
             // button1
@@ -215,6 +218,7 @@
             this.button1.TabIndex = 114;
             this.button1.Text = "Submit Review and Plan";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -813,11 +817,40 @@
             this.label23.TabIndex = 161;
             this.label23.Text = "Plan";
             // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(1097, 312);
+            this.textBox17.Multiline = true;
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(405, 93);
+            this.textBox17.TabIndex = 162;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(1098, 291);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(90, 15);
+            this.label24.TabIndex = 163;
+            this.label24.Text = "Next Week Plan";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(1098, 113);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(119, 15);
+            this.label25.TabIndex = 164;
+            this.label25.Text = "Current Week Review";
+            // 
             // weekRecapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1514, 1061);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.textBox17);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
@@ -1002,5 +1035,8 @@
         private Label label21;
         private Label label22;
         private Label label23;
+        private TextBox textBox17;
+        private Label label24;
+        private Label label25;
     }
 }
